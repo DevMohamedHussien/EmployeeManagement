@@ -14,7 +14,6 @@ namespace Infrastructure.Data
             var roleManager = service.GetRequiredService<RoleManager<IdentityRole>>();
             var userManager = service.GetRequiredService<UserManager<AppUser>>();
 
-            // Seed Roles
             string[] roles = { "User", "SuperAdmin", "Admin", "Manager", "Employee" };
             foreach (var role in roles)
             {
@@ -24,16 +23,17 @@ namespace Infrastructure.Data
                 }
             }
 
-            // Seed SuperAdmin User
             var superAdminEmail = "Omar@gmail.com";
             var user = await userManager.FindByEmailAsync(superAdminEmail);
             if (user == null)
             {
                 var superAdmin = new AppUser
                 {
-                    UserName = "Omar",
+                    UserName = superAdminEmail,
+                    NormalizedUserName = superAdminEmail.ToUpper(),
                     Email = superAdminEmail,
-                    EmailConfirmed = true
+                    NormalizedEmail = superAdminEmail.ToUpper(),
+                    EmailConfirmed = false
                 };
 
                 var result = await userManager.CreateAsync(superAdmin, "P@$$w0rd");
@@ -62,7 +62,6 @@ namespace Infrastructure.Data
                 }
             }
 
-            // (Optional) Seed an Employee
             var employeeEmail = "employee@test.com";
             var employee = await userManager.FindByEmailAsync(employeeEmail);
             if (employee == null)

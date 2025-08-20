@@ -29,7 +29,7 @@ namespace Web.Controllers
 
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                ViewBag.Error = "Please enter both username and password";
+                ViewBag.Error = "Please enter both Username and password";
                 return View();
             }
 
