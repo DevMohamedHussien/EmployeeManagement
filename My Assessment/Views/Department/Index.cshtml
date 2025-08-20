@@ -29,6 +29,7 @@
         <tr>
             <th>Id</th>
             <th>Name</th>
+            <th>Manager</th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
@@ -48,6 +49,7 @@
                 <tr>
                     <td>@department.Id</td>
                     <th>@department.Name</th>
+                    <th>@department.Manager?.FullName</th>
                     <th>
                         <a asp-action="Update" asp-controller="Department" asp-route-id="@department.Id" class="btn btn-primary">Edit</a>
                     </th>

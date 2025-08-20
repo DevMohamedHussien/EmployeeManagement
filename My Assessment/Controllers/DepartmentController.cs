@@ -13,11 +13,9 @@ namespace My_Assessment.Controllers
     {
         private readonly IDepartmentService _departmentService;
         private readonly IEmployeeService _employeeService;
-        private readonly IUnitOfWork _unitOfWork;
-        public DepartmentController(IDepartmentService departmentService, IUnitOfWork unitOfWork, IEmployeeService employeeService)
+        public DepartmentController(IDepartmentService departmentService, IEmployeeService employeeService)
         {
             _departmentService = departmentService;
-            _unitOfWork = unitOfWork;
             _employeeService = employeeService;
         }
 
