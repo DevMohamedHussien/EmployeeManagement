@@ -15,3 +15,21 @@ C:\Users\User\source\repos\MyAssessment.Business\obj\Debug\net8.0\MyAssessment.B
 C:\Users\User\source\repos\MyAssessment.Business\obj\Debug\net8.0\refint\MyAssessment.Business.dll
 C:\Users\User\source\repos\MyAssessment.Business\obj\Debug\net8.0\MyAssessment.Business.pdb
 C:\Users\User\source\repos\MyAssessment.Business\obj\Debug\net8.0\ref\MyAssessment.Business.dll
+C:\Users\User\source\repos\Employee Management\MyAssessment.Business\bin\Debug\net8.0\MyAssessment.Business.deps.json
+C:\Users\User\source\repos\Employee Management\MyAssessment.Business\bin\Debug\net8.0\MyAssessment.Business.dll
+C:\Users\User\source\repos\Employee Management\MyAssessment.Business\bin\Debug\net8.0\MyAssessment.Business.pdb
+C:\Users\User\source\repos\Employee Management\MyAssessment.Business\bin\Debug\net8.0\MyAssessment.Core.dll
+C:\Users\User\source\repos\Employee Management\MyAssessment.Business\bin\Debug\net8.0\MyAssessment.DataAccess.dll
+C:\Users\User\source\repos\Employee Management\MyAssessment.Business\bin\Debug\net8.0\MyAssessment.Core.pdb
+C:\Users\User\source\repos\Employee Management\MyAssessment.Business\bin\Debug\net8.0\MyAssessment.DataAccess.pdb
+C:\Users\User\source\repos\Employee Management\MyAssessment.Business\obj\Debug\net8.0\MyAssessment.Business.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\Employee Management\MyAssessment.Business\obj\Debug\net8.0\MyAssessment.Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\source\repos\Employee Management\MyAssessment.Business\obj\Debug\net8.0\MyAssessment.Business.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\Employee Management\MyAssessment.Business\obj\Debug\net8.0\MyAssessment.Business.AssemblyInfo.cs
+C:\Users\User\source\repos\Employee Management\MyAssessment.Business\obj\Debug\net8.0\MyAssessment.Business.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\Employee Management\MyAssessment.Business\obj\Debug\net8.0\MyAssessment.Business.sourcelink.json
+C:\Users\User\source\repos\Employee Management\MyAssessment.Business\obj\Debug\net8.0\MyAssess.96332762.Up2Date
+C:\Users\User\source\repos\Employee Management\MyAssessment.Business\obj\Debug\net8.0\MyAssessment.Business.dll
+C:\Users\User\source\repos\Employee Management\MyAssessment.Business\obj\Debug\net8.0\refint\MyAssessment.Business.dll
+C:\Users\User\source\repos\Employee Management\MyAssessment.Business\obj\Debug\net8.0\MyAssessment.Business.pdb
+C:\Users\User\source\repos\Employee Management\MyAssessment.Business\obj\Debug\net8.0\ref\MyAssessment.Business.dll
