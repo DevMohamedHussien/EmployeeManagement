@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\source\\repos\\MyAssessment.Business\\MyAssessment.Business.csproj": {}
+    "C:\\Users\\User\\source\\repos\\Employee Management\\MyAssessment.Business\\MyAssessment.Business.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\source\\repos\\MyAssessment.Business\\MyAssessment.Business.csproj": {
+    "C:\\Users\\User\\source\\repos\\Employee Management\\MyAssessment.Business\\MyAssessment.Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\source\\repos\\MyAssessment.Business\\MyAssessment.Business.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\Employee Management\\MyAssessment.Business\\MyAssessment.Business.csproj",
         "projectName": "MyAssessment.Business",
-        "projectPath": "C:\\Users\\User\\source\\repos\\MyAssessment.Business\\MyAssessment.Business.csproj",
+        "projectPath": "C:\\Users\\User\\source\\repos\\Employee Management\\MyAssessment.Business\\MyAssessment.Business.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\source\\repos\\MyAssessment.Business\\obj\\",
+        "outputPath": "C:\\Users\\User\\source\\repos\\Employee Management\\MyAssessment.Business\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -29,11 +29,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\User\\source\\repos\\MyAssessment.Core\\MyAssessment.Core.csproj": {
-                "projectPath": "C:\\Users\\User\\source\\repos\\MyAssessment.Core\\MyAssessment.Core.csproj"
+              "C:\\Users\\User\\source\\repos\\Employee Management\\MyAssessment.Core\\MyAssessment.Core.csproj": {
+                "projectPath": "C:\\Users\\User\\source\\repos\\Employee Management\\MyAssessment.Core\\MyAssessment.Core.csproj"
               },
-              "C:\\Users\\User\\source\\repos\\MyAssessment.DataAccess\\MyAssessment.DataAccess.csproj": {
-                "projectPath": "C:\\Users\\User\\source\\repos\\MyAssessment.DataAccess\\MyAssessment.DataAccess.csproj"
+              "C:\\Users\\User\\source\\repos\\Employee Management\\MyAssessment.DataAccess\\MyAssessment.DataAccess.csproj": {
+                "projectPath": "C:\\Users\\User\\source\\repos\\Employee Management\\MyAssessment.DataAccess\\MyAssessment.DataAccess.csproj"
               }
             }
           }
@@ -90,14 +90,14 @@
         }
       }
     },
-    "C:\\Users\\User\\source\\repos\\MyAssessment.Core\\MyAssessment.Core.csproj": {
+    "C:\\Users\\User\\source\\repos\\Employee Management\\MyAssessment.Core\\MyAssessment.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\source\\repos\\MyAssessment.Core\\MyAssessment.Core.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\Employee Management\\MyAssessment.Core\\MyAssessment.Core.csproj",
         "projectName": "MyAssessment.Core",
-        "projectPath": "C:\\Users\\User\\source\\repos\\MyAssessment.Core\\MyAssessment.Core.csproj",
+        "projectPath": "C:\\Users\\User\\source\\repos\\Employee Management\\MyAssessment.Core\\MyAssessment.Core.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\source\\repos\\MyAssessment.Core\\obj\\",
+        "outputPath": "C:\\Users\\User\\source\\repos\\Employee Management\\MyAssessment.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -175,14 +175,14 @@
         }
       }
     },
-    "C:\\Users\\User\\source\\repos\\MyAssessment.DataAccess\\MyAssessment.DataAccess.csproj": {
+    "C:\\Users\\User\\source\\repos\\Employee Management\\MyAssessment.DataAccess\\MyAssessment.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\source\\repos\\MyAssessment.DataAccess\\MyAssessment.DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\User\\source\\repos\\Employee Management\\MyAssessment.DataAccess\\MyAssessment.DataAccess.csproj",
         "projectName": "MyAssessment.DataAccess",
-        "projectPath": "C:\\Users\\User\\source\\repos\\MyAssessment.DataAccess\\MyAssessment.DataAccess.csproj",
+        "projectPath": "C:\\Users\\User\\source\\repos\\Employee Management\\MyAssessment.DataAccess\\MyAssessment.DataAccess.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\source\\repos\\MyAssessment.DataAccess\\obj\\",
+        "outputPath": "C:\\Users\\User\\source\\repos\\Employee Management\\MyAssessment.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -200,8 +200,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\User\\source\\repos\\MyAssessment.Core\\MyAssessment.Core.csproj": {
-                "projectPath": "C:\\Users\\User\\source\\repos\\MyAssessment.Core\\MyAssessment.Core.csproj"
+              "C:\\Users\\User\\source\\repos\\Employee Management\\MyAssessment.Core\\MyAssessment.Core.csproj": {
+                "projectPath": "C:\\Users\\User\\source\\repos\\Employee Management\\MyAssessment.Core\\MyAssessment.Core.csproj"
               }
             }
           }

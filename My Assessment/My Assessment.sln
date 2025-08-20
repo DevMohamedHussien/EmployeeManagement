@@ -3,13 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "My Assessment", "My Assessment.csproj", "{D7342D16-ABC3-4CE4-B8FE-8F941947874E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "My Assessment", "My Assessment.csproj", "{D7342D16-ABC3-4CE4-B8FE-8F941947874E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyAssessment.Core", "..\MyAssessment.Core\MyAssessment.Core.csproj", "{DCEA07D4-C581-4206-B5D1-7A54653F5CF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyAssessment.Core", "..\MyAssessment.Core\MyAssessment.Core.csproj", "{DCEA07D4-C581-4206-B5D1-7A54653F5CF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyAssessment.DataAccess", "..\MyAssessment.DataAccess\MyAssessment.DataAccess.csproj", "{77F97562-C1F5-4106-83F9-B4F87737DA9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyAssessment.DataAccess", "..\MyAssessment.DataAccess\MyAssessment.DataAccess.csproj", "{77F97562-C1F5-4106-83F9-B4F87737DA9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyAssessment.Business", "..\MyAssessment.Business\MyAssessment.Business.csproj", "{440B9544-BBCA-4748-8C9C-AA8992919935}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyAssessment.Business", "..\MyAssessment.Business\MyAssessment.Business.csproj", "{440B9544-BBCA-4748-8C9C-AA8992919935}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{641DC799-8469-4DA3-827C-E2E5CFD64F1B}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
