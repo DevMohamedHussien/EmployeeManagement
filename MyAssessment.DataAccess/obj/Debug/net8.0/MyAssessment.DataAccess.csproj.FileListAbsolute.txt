@@ -1,0 +1,17 @@
+C:\Users\User\source\repos\MyAssessment.DataAccess\bin\Debug\net8.0\MyAssessment.DataAccess.deps.json
+C:\Users\User\source\repos\MyAssessment.DataAccess\bin\Debug\net8.0\MyAssessment.DataAccess.runtimeconfig.json
+C:\Users\User\source\repos\MyAssessment.DataAccess\bin\Debug\net8.0\MyAssessment.DataAccess.dll
+C:\Users\User\source\repos\MyAssessment.DataAccess\bin\Debug\net8.0\MyAssessment.DataAccess.pdb
+C:\Users\User\source\repos\MyAssessment.DataAccess\bin\Debug\net8.0\MyAssessment.Core.dll
+C:\Users\User\source\repos\MyAssessment.DataAccess\bin\Debug\net8.0\MyAssessment.Core.pdb
+C:\Users\User\source\repos\MyAssessment.DataAccess\obj\Debug\net8.0\MyAssessment.DataAccess.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\MyAssessment.DataAccess\obj\Debug\net8.0\MyAssessment.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\source\repos\MyAssessment.DataAccess\obj\Debug\net8.0\MyAssessment.DataAccess.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\MyAssessment.DataAccess\obj\Debug\net8.0\MyAssessment.DataAccess.AssemblyInfo.cs
+C:\Users\User\source\repos\MyAssessment.DataAccess\obj\Debug\net8.0\MyAssessment.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\MyAssessment.DataAccess\obj\Debug\net8.0\MyAssess.6DA1BF15.Up2Date
+C:\Users\User\source\repos\MyAssessment.DataAccess\obj\Debug\net8.0\MyAssessment.DataAccess.dll
+C:\Users\User\source\repos\MyAssessment.DataAccess\obj\Debug\net8.0\refint\MyAssessment.DataAccess.dll
+C:\Users\User\source\repos\MyAssessment.DataAccess\obj\Debug\net8.0\MyAssessment.DataAccess.pdb
+C:\Users\User\source\repos\MyAssessment.DataAccess\obj\Debug\net8.0\MyAssessment.DataAccess.genruntimeconfig.cache
+C:\Users\User\source\repos\MyAssessment.DataAccess\obj\Debug\net8.0\ref\MyAssessment.DataAccess.dll

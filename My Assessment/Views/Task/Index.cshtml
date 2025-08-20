@@ -1,0 +1,48 @@
+﻿@model List<MyAssessment.Core.Entities.TaskItem>
+
+@{
+    ViewData["Title"] = "Tasks";
+}
+
+<h2>Tasks Management</h2>
+<a asp-action="Create" asp-controller="Task" asp-area="" class="btn btn-primary mb-4">Create New Task</a>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Title</th>
+            <th>Status</th>
+            <th>Assigned Employee</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var task in Model)
+            {
+                <tr>
+                    <td>@task.Title</td>
+                    <td>@task.Status</td>
+                    <td>@task.Employee?.FullName</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@task.Id" class="btn btn-sm btn-primary">Edit</a>
+                        <a asp-action="Details" asp-route-id="@task.Id" class="btn btn-sm btn-info">Details</a>
+                        <form asp-action="Delete" asp-route-id="@task.Id" method="post" style="display:inline">
+                            <button type="submit" class="btn btn-sm btn-danger"
+                                    onclick="return confirm('Are you sure you want to delete this task?');">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center text-muted">No tasks found</td>
+            </tr>
+        }
+    </tbody>
+</table>

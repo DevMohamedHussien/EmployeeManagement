@@ -1,0 +1,20 @@
+﻿@model MyAssessment.Core.ViewModels.DepartmentViewModel
+
+
+<div class="page-header">
+    <h1>Create New Department</h1>
+</div>
+<form method="post" asp-action="Create" asp-controller="Department" asp-area="" enctype="multipart/form-data" class="ml-5">
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="form-group">
+                <label asp-for="Name" class="col-form-label">Department Name</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+
+</form>
