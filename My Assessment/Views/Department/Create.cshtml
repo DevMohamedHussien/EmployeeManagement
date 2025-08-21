@@ -6,17 +6,51 @@
 </div>
 <form method="post" asp-action="Create" asp-controller="Department" asp-area="" enctype="multipart/form-data" class="ml-5">
     <div class="row">
-        <div class="col-md-6">
-
-            <div class="form-group">
-                <label asp-for="Name" class="col-form-label">Department Name</label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
+        <div class="form-group">
+            <label asp-for="Name" class="col-form-label">Department Name</label>
+            <input asp-for="Name" class="form-control" id="DepartmentName" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+            <span id="deptNameError" class="text-danger"></span>
         </div>
+
     </div>
     <br>
     <br>
     <button type="submit" class="btn btn-primary">Save</button>
 
 </form>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#DepartmentName").on("blur", function () {
+                var deptName = $(this).val();
+
+                if (deptName.length > 0) {
+                    $.ajax({
+                        url: '@Url.Action("CheckDepartmentName", "Department")',
+                        type: 'GET',
+                        data: { name: deptName },
+                        success: function (response) {
+                            if (!response) {
+                                $("#deptNameError").text("Department name already exists.");
+                            } else {
+                                $("#deptNameError").text("");
+                            }
+                        }
+                    });
+                } else {
+                    $("#deptNameError").text("");
+                }
+            });
+        });
+        $("form").on("submit", function (e) {
+            if ($("#deptNameError").text().length > 0) {
+                e.preventDefault();
+                alert("Please fix the errors before submitting.");
+            }
+        });
+    </script>
+}

@@ -9,8 +9,8 @@ namespace MyAssessment.Core.Interfaces
 {
     public interface IGenericRepository<T> where T : class
     {
-        Task<T> GetByIdAsync(int id);
-        Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includeProperties);
+        Task<T> GetOneAsync(Expression<Func<T, bool>>? filter=null, string? props = null);
+        Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>>? filter = null, string? props = null);
         Task AddAsync(T entity);
         void Update(T entity);
         void Delete(T entity);

@@ -1,52 +1,62 @@
 ﻿@model MyAssessment.Core.ViewModels.EmployeeViewModel
 
+<div class="container mt-5">
+    <div class="card shadow-lg p-4 rounded">
+        <div class="card-header text-center mb-3">
+            <h2 class="fw-bold">Add New Employee</h2>
+        </div>
 
-<div class="page-header">
-    <h1>Add New Employee</h1>
-</div>
-<form method="post" asp-action="Create" asp-controller="Employee" asp-area="" enctype="multipart/form-data" class="ml-5">
-    <div class="row">
-        <div class="col-md-6">
+        <form method="post" asp-action="Create" asp-controller="Employee" enctype="multipart/form-data">
+            <div class="row align-items-start">
+                <div class="col-md-4 text-center">
+                    <div class="mb-3">
+                        <label asp-for="ImageFile" class="form-label fw-semibold">Employee Image</label>
+                        <input asp-for="ImageFile" type="file" class="form-control" />
+                        <span asp-validation-for="ImageFile" class="text-danger"></span>
+                    </div>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="FirstName" class="col-form-label">First Name</label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LastName" class="col-form-label">Last Name</label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email"></label>
-                <input asp-for="Email" type="email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password"></label>
-                <input asp-for="Password" type="password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label>Department</label>
-                    <select asp-for="DepartmentId" asp-items="ViewBag.Departments" class="form-control"></select>
+                <div class="col-md-8">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label asp-for="FirstName" class="form-label fw-semibold">First Name</label>
+                            <input asp-for="FirstName" class="form-control" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="LastName" class="form-label fw-semibold">Last Name</label>
+                            <input asp-for="LastName" class="form-control" />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="Email" class="form-label fw-semibold">Email</label>
+                            <input asp-for="Email" type="email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="Password" class="form-label fw-semibold">Password</label>
+                            <input asp-for="Password" type="password" class="form-control" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Department</label>
+                            <select asp-for="DepartmentId" asp-items="ViewBag.Departments" class="form-control"></select>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="Salary" class="form-label fw-semibold">Salary</label>
+                            <input asp-for="Salary" class="form-control" />
+                            <span asp-validation-for="Salary" class="text-danger"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Salary" class="col-form-label">Salary</label>
-                <input asp-for="Salary" class="form-control" />
-                <span asp-validation-for="Salary" class="text-danger"></span>
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary px-4">➕ Add Employee</button>
             </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="ImageFile" class="control-label">Employee Image</label>
-            <input type="file" name="imageFile" class="form-control" />
-            <span asp-validation-for="ImageFile" class="text-danger"></span>
-        </div>
-
+        </form>
     </div>
-    <button type="submit" class="btn btn-primary">Save</button>
+</div>
 
-</form>
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyAssessment.Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,9 @@ namespace MyAssessment.Core.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        IEmployeeRepository Employees { get; }
-        IDepartmentRepository Departments { get; }
-        ITaskRepository Tasks { get; }
+        IGenericRepository<Employee> Employees { get; }
+        IGenericRepository<Department> Departments { get; }
+        IGenericRepository<TaskItem> Tasks { get; }
         Task<int> SaveAsync();
     }
 }

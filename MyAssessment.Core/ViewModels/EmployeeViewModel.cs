@@ -1,23 +1,33 @@
 ﻿using Microsoft.AspNetCore.Http;
 using MyAssessment.Core.Entities;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyAssessment.Core.ViewModels
 {
     public class EmployeeViewModel
     {
         public int Id { get; set; }
+        [Required]
         public string FirstName { get; set; }
+        [Required]
         public string LastName { get; set; }
+        [Required]
         public decimal Salary { get; set; }
+        [Required]
         public string ImagePath { get; set; }
+        [Required]
         public IFormFile ImageFile { get; set; }
 
         public int? ManagerId { get; set; }
+        public Employee Manager { get; set; }
         public string ManagerName { get; set; }
+        [Required]
         public int DepartmentId { get; set; }
         public string DepartmentName { get; set; }
         public string FullName => $"{FirstName} {LastName}";
+        [Required]
         public string Email { get; set; }
+        [Required]
         public string Password { get; set; }
         public string AppUserId { get; set; }
         public static Employee GetEmployeeEntity(EmployeeViewModel model)

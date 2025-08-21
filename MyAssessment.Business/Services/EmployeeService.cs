@@ -9,6 +9,7 @@ using MyAssessment.DataAccess.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,11 +27,7 @@ namespace MyAssessment.Business.Services
             _userManager = userManager;
         }
 
-        public async Task<IEnumerable<Employee>> GetAllEmployeesAsync() =>
-            await _unitOfWork.Employees.GetAllAsync(e=>e.Department);
-        public async Task<Employee> GetEmployeeByIdAsync(int id) =>
-            await _unitOfWork.Employees.GetByIdAsync(id);
-        public async Task AddEmployeeAsync(Employee employee , string email, string password)
+        public async Task AddEmployeeAsync(Employee employee, string email, string password)
         {
             var user = new AppUser
             {
@@ -45,7 +42,7 @@ namespace MyAssessment.Business.Services
                 throw new Exception(string.Join("; ", result.Errors.Select(e => e.Description)));
             }
             await _userManager.AddToRoleAsync(user, "Employee");
-            employee.AppUserId = user.Id;  
+            employee.AppUserId = user.Id;
             employee.ImagePath = await SaveImageAsync(employee.imageFile);
             await _unitOfWork.Employees.AddAsync(employee);
             await _unitOfWork.SaveAsync();
@@ -58,17 +55,65 @@ namespace MyAssessment.Business.Services
         }
         public async Task DeleteEmployeeAsync(int id)
         {
-            var employee = await _unitOfWork.Employees.GetByIdAsync(id);
+            var employee = await _unitOfWork.Employees.GetOneAsync(c=>c.Id==id);
+            var department = await _unitOfWork.Departments.GetOneAsync(d => d.Id == employee.DepartmentId);
+
             if (employee != null)
             {
-                DeleteImage(employee.ImagePath);
-                await AssignTasksToManagerWhenTheEmployeeIsDeleted(id);
+                if (department.ManagerId == id)
+                {
+                    department.ManagerId = null;
+                    var assignedTasks = await _unitOfWork.Tasks.GetAllAsync(t => t.EmployeeId == id);
+                    foreach (var task in assignedTasks)
+                    {
+                        _unitOfWork.Tasks.Delete(task);
+                         await _unitOfWork.SaveAsync(); 
+                    }
+                    var departmentEmployees = await _unitOfWork.Employees.GetAllAsync(e => e.ManagerId == id);
+                    foreach (var emp in departmentEmployees)
+                    {
+                        emp.ManagerId = null;
+                        await _unitOfWork.SaveAsync();
+                    }
+                }
+                else
+                {
+                    await AssignTasksToManagerWhenTheEmployeeIsDeleted(id);
+                }
                 _unitOfWork.Employees.Delete(employee);
                 await _unitOfWork.SaveAsync();
+                DeleteImage(employee.ImagePath);
+            
             }
         }
-        public async Task<IEnumerable<Employee>> GetEmployeesByDepartmentAsync(int departmentId) =>
-            await _unitOfWork.Employees.GetEmployeesByDepartmentAsync(departmentId);
+
+
+        public async Task<Employee> GetOneEmployeeAsync(Expression<Func<Employee, bool>>? filter=null, string? props = null)
+        {
+            try
+            {
+                var employee = await _unitOfWork.Employees.GetOneAsync(filter,props);
+                return employee;
+            }
+            catch (Exception ex)
+            {
+                return new Employee();
+            }
+        }
+        public async Task<IEnumerable<Employee>> GetAllEmployeeAsync(Expression<Func<Employee, bool>>? filter = null, string? props = null) 
+        {
+            try
+            {
+                var employee = await _unitOfWork.Employees.GetAllAsync(filter, props);
+                return employee;
+            }
+            catch (Exception ex)
+            {
+                return new List<Employee>();
+            }
+        }      
+      
+
         private async Task<string> SaveImageAsync(IFormFile imageFile)
         {
 
@@ -126,10 +171,9 @@ namespace MyAssessment.Business.Services
                 }
             }
         }
-
         private async Task AssignTasksToManagerWhenTheEmployeeIsDeleted(int employeeId)
         {
-            var tasks = await _unitOfWork.Tasks.GetTasksByEmployeeIdAsync(employeeId);
+            var tasks = await _unitOfWork.Tasks.GetAllAsync(c=>c.EmployeeId==employeeId);
             foreach (var task in tasks)
             {
                 task.EmployeeId = task.ManagerId;

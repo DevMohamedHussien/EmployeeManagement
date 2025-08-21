@@ -14,216 +14,254 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
     <style>
-      :root {
-          --primary-color: #4e73df;
-          --secondary-color: #6f42c1;
-          --accent-color: #36b9cc;
-          --light-bg: #f8f9fc;
-      }
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
 
-      body {
-          background-color: var(--light-bg);
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-          padding-bottom: 2rem;
-      }
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* full viewport height */
+        }
 
-      .page-header {
-          background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-          color: white;
-          padding: 2rem 0;
-          margin-bottom: 2rem;
-          border-radius: 0 0 15px 15px;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-      }
+        main {
+            flex: 1; /* pushes footer down */
+        }
 
-      .card {
-          border: none;
-          border-radius: 12px;
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-          overflow: hidden;
-      }
+        footer {
+            background-color: #f8f9fa;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        :root {
+            --primary-color: #4e73df;
+            --secondary-color: #6f42c1;
+            --accent-color: #36b9cc;
+            --light-bg: #f8f9fc;
+        }
 
-      .card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-      }
+        body {
+            background-color: var(--light-bg);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-bottom: 2rem;
+        }
 
-      .card-header {
-          background: linear-gradient(120deg, var(--primary-color), var(--accent-color));
-          color: white;
-          font-weight: 600;
-          border-radius: 12px 12px 0 0 !important;
-          padding: 1.2rem 1.5rem;
-      }
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
 
-      .btn-primary {
-          background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-          border: none;
-          border-radius: 8px;
-          padding: 0.6rem 1.5rem;
-          transition: all 0.3s ease;
-      }
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
 
-      .btn-primary:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      }
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            }
 
-      .btn-danger {
-          border-radius: 8px;
-          padding: 0.5rem 1rem;
-          transition: all 0.3s ease;
-      }
+        .card-header {
+            background: linear-gradient(120deg, var(--primary-color), var(--accent-color));
+            color: white;
+            font-weight: 600;
+            border-radius: 12px 12px 0 0 !important;
+            padding: 1.2rem 1.5rem;
+        }
 
-      .btn-danger:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
-      }
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border: none;
+            border-radius: 8px;
+            padding: 0.6rem 1.5rem;
+            transition: all 0.3s ease;
+        }
 
-      .table-hover tbody tr {
-          transition: all 0.3s ease;
-      }
+            .btn-primary:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
 
-      .table-hover tbody tr:hover {
-          background-color: rgba(78, 115, 223, 0.1);
-          transform: translateX(5px);
-      }
+        .btn-danger {
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
 
-      .dataTables_wrapper {
-          padding: 0 10px;
-      }
+            .btn-danger:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+            }
 
-      .fade-in {
-          animation: fadeIn 0.6s ease-in;
-      }
+        .table-hover tbody tr {
+            transition: all 0.3s ease;
+        }
 
-      @@keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-      }
+            .table-hover tbody tr:hover {
+                background-color: rgba(78, 115, 223, 0.1);
+                transform: translateX(5px);
+            }
 
-      .slide-in-left {
-          animation: slideInLeft 0.5s ease-out;
-      }
+        .dataTables_wrapper {
+            padding: 0 10px;
+        }
 
-      @@keyframes slideInLeft {
-          from { opacity: 0; transform: translateX(-30px); }
-          to { opacity: 1; transform: translateX(0); }
-      }
+        .fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
 
-      .search-box {
-          border-radius: 25px;
-          padding: 0.5rem 1.5rem;
-          border: 1px solid #ddd;
-          transition: all 0.3s ease;
-      }
+        @@keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
 
-      .search-box:focus {
-          box-shadow: 0 0 0 0.25rem rgba(78, 115, 223, 0.25);
-          border-color: var(--primary-color);
-      }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-      .action-buttons {
-          white-space: nowrap;
-      }
+        .slide-in-left {
+            animation: slideInLeft 0.5s ease-out;
+        }
 
-      .empty-state {
-          text-align: center;
-          padding: 2rem;
-          color: #6c757d;
-      }
+        @@keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
 
-      .empty-state i {
-          font-size: 5rem;
-          margin-bottom: 1rem;
-          color: #dee2e6;
-      }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
 
-      .department-icon {
-          width: 40px;
-          height: 40px;
-          background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          font-weight: bold;
-          margin-right: 12px;
-      }
+        .search-box {
+            border-radius: 25px;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid #ddd;
+            transition: all 0.3s ease;
+        }
 
-      .stats-card {
-          text-align: center;
-          padding: 1.5rem;
-      }
+            .search-box:focus {
+                box-shadow: 0 0 0 0.25rem rgba(78, 115, 223, 0.25);
+                border-color: var(--primary-color);
+            }
 
-      .stats-number {
-          font-size: 2.5rem;
-          font-weight: 700;
-          color: var(--primary-color);
-          margin: 0.5rem 0;
-      }
+        .action-buttons {
+            white-space: nowrap;
+        }
 
-      .stats-label {
-          color: #6c757d;
-          font-weight: 600;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          font-size: 0.85rem;
-      }
-    </style>
-    <style>
-                /* Background gradient */
-                .login-container {
-                    /*            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-        */ animation: fadeBackground 6s infinite alternate;
-                }
+        .empty-state {
+            text-align: center;
+            padding: 2rem;
+            color: #6c757d;
+        }
 
-                /* Animated background shift */
-                @@keyframes fadeBackground {
-                    0% {
-                        background-position: left;
-                    }
+            .empty-state i {
+                font-size: 5rem;
+                margin-bottom: 1rem;
+                color: #dee2e6;
+            }
 
-                    100% {
-                        background-position: right;
-                    }
-                }
+        .department-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 12px;
+        }
 
-                /* Input focus glow */
-                .custom-input:focus {
-                    border-color: #2575fc;
-                    box-shadow: 0 0 8px rgba(37, 117, 252, 0.6);
-                    transition: 0.3s;
-                }
+        .stats-card {
+            text-align: center;
+            padding: 1.5rem;
+        }
 
-                /* Button hover effect */
-                .login-btn {
-                    transition: all 0.3s ease-in-out;
-                }
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 0.5rem 0;
+        }
 
-                    .login-btn:hover {
-                        background-color: #1a5edb;
-                        transform: translateY(-2px) scale(1.02);
-                        box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-                    }
+        .stats-label {
+            color: #6c757d;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+        }
+        .employee-photo {
+            width: 80px;
+            height: 70px;
+            border-radius: 40%;
+            object-fit: cover;
+            transition: transform 0.6s ease, box-shadow 0.6s ease;
+            box-shadow: 0 0 8px rgba(0,0,0,0.2);
+        }
 
-                .login-card {
-                    animation: slideIn 1s ease-out;
-                }
+            .employee-photo:hover {
+                transform: scale(1.3);
+            }
 
-                @@keyframes slideIn {
-                    0% {
-                        transform: translateY(-50px);
-                        opacity: 0;
-                    }
 
-                    100% {
-                        transform: translateY(0);
-                        opacity: 1;
-                    }
-                }
+        .login-container {
+            animation: fadeBackground 6s infinite alternate;
+        }
+        @@keyframes fadeBackground {
+            0% {
+                background-position: left;
+            }
+
+            100% {
+                background-position: right;
+            }
+        }
+        .custom-input:focus {
+            border-color: #2575fc;
+            box-shadow: 0 0 8px rgba(37, 117, 252, 0.6);
+            transition: 0.3s;
+        }
+        .login-btn {
+            transition: all 0.3s ease-in-out;
+        }
+
+            .login-btn:hover {
+                background-color: #1a5edb;
+                transform: translateY(-2px) scale(1.02);
+                box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+            }
+
+        .login-card {
+            animation: slideIn 1s ease-out;
+        }
+
+        @@keyframes slideIn {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body>
@@ -236,32 +274,40 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Department" asp-action="Index">Departments</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index">Employees</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Task" asp-action="Index">Task Management</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Task" asp-action="MyTasks">My Tasks</a>
-                        </li>
-                    </ul>
-                    <partial name="_LoginPartial" />
-                </div>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        var loggedUserId = User.Identity.Name;
+                        var loggedUser = await _userManager.FindByNameAsync(loggedUserId);
+                        <ul class="navbar-nav flex-grow-1">
+                            @if (!await _userManager.IsInRoleAsync(loggedUser, "Employee"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Department" asp-action="Index">Departments</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Employee" asp-action="Index">Employees</a>
+                                </li>
+                            }
+                            @if (await _userManager.IsInRoleAsync(loggedUser, "Manager"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Task" asp-action="Index">Task Management</a>
+                                </li>
+                            }
+                            @if (!await _userManager.IsInRoleAsync(loggedUser, "SuperAdmin"))
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Task" asp-action="MyTasks">My Tasks</a>
+                                </li>
+                            }
+                        </ul>
+                    }
+                        <partial name="_LoginPartial" />
+                    </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div style="min-height:auto" class="container container-fluid">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>

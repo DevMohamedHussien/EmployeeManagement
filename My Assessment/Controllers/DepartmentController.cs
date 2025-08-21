@@ -1,4 +1,5 @@
 ﻿using Humanizer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +10,7 @@ using MyAssessment.Core.ViewModels;
 
 namespace My_Assessment.Controllers
 {
+    [Authorize(Roles = "SuperAdmin,Manager")]
     public class DepartmentController : Controller
     {
         private readonly IDepartmentService _departmentService;
@@ -21,7 +23,7 @@ namespace My_Assessment.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var departments = await _departmentService.GetAllDepartmentsAsync();
+            var departments = await _departmentService.GetAllDepartmentAsync(props: "Manager,Employees");
             ViewBag.Departments = new SelectList(departments, "Id", "Name");
             return View(departments);
         }
@@ -29,7 +31,6 @@ namespace My_Assessment.Controllers
         [HttpGet]
         public async Task<IActionResult> Create()
         {
-            //ViewBag.Employees = new SelectList(await _employeeService.GetAllEmployeesAsync(), "Id", "FullName");
             return View();
         }
 
@@ -43,9 +44,9 @@ namespace My_Assessment.Controllers
         public async Task<IActionResult> Update(int id)
         {
 
-            var department = await _departmentService.GetDepartmentByIdAsync(id);
+            var department = await _departmentService.GetOneDepartmentAsync(d=>d.Id==id);
             var model = DepartmentViewModel.GetDepartmentViewModel(department);
-            ViewBag.Employees = new SelectList(await _employeeService.GetEmployeesByDepartmentAsync(id), "Id", "FullName", model.ManagerId);
+            ViewBag.Employees = new SelectList(await _employeeService.GetAllEmployeeAsync(e=>e.DepartmentId==department.Id), "Id", "FullName", model.ManagerId);
 
             return View(model);
         }
@@ -72,14 +73,14 @@ namespace My_Assessment.Controllers
         [HttpGet]
         public async Task<IActionResult> Search(int departmentId)
         {
-            var department = await _departmentService.GetDepartmentByIdAsync(departmentId);
+            var department = await _departmentService.GetOneDepartmentAsync(d => d.Id == departmentId);
 
             if (department == null)
             {
                 return NotFound();
             }
 
-            var employees = await _employeeService.GetEmployeesByDepartmentAsync(departmentId);
+            var employees = await _employeeService.GetAllEmployeeAsync(e => e.DepartmentId == departmentId);
 
             var viewModel = new DepartmentDetailsViewModel
             {
@@ -93,8 +94,19 @@ namespace My_Assessment.Controllers
                 }).ToList()
             };
 
-            return View(viewModel);
+            return PartialView("_DepartmentDetailsPartial", viewModel);
         }
+
+        [HttpGet]
+        public async Task<JsonResult> CheckDepartmentName(string name)
+        {
+            var department = await _departmentService.GetOneDepartmentAsync(d => d.Name.ToLower() == name.ToLower());
+
+            bool exists = department != null;
+
+            return Json(!exists); 
+        }
+
 
     }
 }

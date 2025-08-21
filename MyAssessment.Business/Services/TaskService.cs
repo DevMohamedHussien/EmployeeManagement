@@ -1,7 +1,9 @@
-﻿using MyAssessment.Core.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using MyAssessment.Core.Entities;
 using MyAssessment.Core.Interfaces;
 using MyAssessment.Core.IServices;
 using MyAssessment.Core.ViewModels;
+using System.Linq.Expressions;
 
 namespace MyAssessment.Business.Services
 {
@@ -11,29 +13,55 @@ namespace MyAssessment.Business.Services
         private readonly IUnitOfWork _unitOfWork;
         public TaskService(IUnitOfWork unitOfWork) => _unitOfWork = unitOfWork;
 
-        public Task<TaskItem> GetTaskByEmployeeIdAsync(int id)
+        public async Task AddTaskAsync(TaskItem task)
         {
-            throw new NotImplementedException();
+            if (task == null)
+                throw new ArgumentNullException(nameof(task));
+
+            await _unitOfWork.Tasks.AddAsync(task);
+            await _unitOfWork.SaveAsync();
+        }
+        public async Task UpdateTaskAsync(TaskItem task)
+        {
+            _unitOfWork.Tasks.Update(task);
+            await _unitOfWork.SaveAsync();
+        }
+        public async Task DeleteTaskAsync(int id)
+        {
+            var task = await _unitOfWork.Tasks.GetOneAsync(t=>t.Id==id);
+            if (task!=null)
+            {
+                _unitOfWork.Tasks.Delete(task);
+                await _unitOfWork.SaveAsync();
+            }
+        
         }
 
-        public Task<TaskItem> GetTaskByManagerIdAsync(int id)
+        public async Task<TaskItem> GetOneTaskAsync(Expression<Func<TaskItem, bool>>? filter = null, string? props = null)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var task = await _unitOfWork.Tasks.GetOneAsync(filter, props);
+                return task;
+            }
+            catch (Exception ex)
+            {
+                return new TaskItem();
+            }
+        }
+        public async Task<IEnumerable<TaskItem>> GetAllTaskstAsync(Expression<Func<TaskItem, bool>>? filter = null, string? props = null)
+        {
+            try
+            {
+                var tasks = await _unitOfWork.Tasks.GetAllAsync(filter, props);
+                return tasks;
+            }
+            catch (Exception ex)
+            {
+                return new List<TaskItem>();
+            }
         }
 
-        public Task AssignTaskToEmployeeAsync(TaskItem task)
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task UpdateTaskStatusAsync(TaskItem task)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task DeleteTaskAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

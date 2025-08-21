@@ -11,24 +11,18 @@ using MyAssessment.DataAccess.UnitOfWork;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
     ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
-// Register DbContext
+
 builder.Services.AddDbContext<MyAssessmentDbContext>(options =>
     options.UseSqlServer(connectionString));
-
-
-// Register Identity
-// Replace your current Identity configuration:
 builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 {
-    // Disable email confirmation
+
     options.SignIn.RequireConfirmedEmail = false;
     options.SignIn.RequireConfirmedAccount = false;
 
-    // Optional: Configure password requirements
     options.Password.RequireDigit = false;
     options.Password.RequiredLength = 6;
     options.Password.RequireNonAlphanumeric = false;
@@ -38,23 +32,17 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(options =>
 .AddEntityFrameworkStores<MyAssessmentDbContext>()
 .AddDefaultTokenProviders();
 
-// Still need to register the email sender
-builder.Services.AddTransient<IEmailSender, NoOpEmailSender>();
-// Register services
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<IDepartmentService, DepartmentService>();
 builder.Services.AddScoped<ITaskService,TaskService>();
-builder.Services.AddScoped<ITaskRepository,TaskRepository>();
-builder.Services.AddScoped<IEmployeeRepository,EmployeeRepository>();
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseMigrationsEndPoint();

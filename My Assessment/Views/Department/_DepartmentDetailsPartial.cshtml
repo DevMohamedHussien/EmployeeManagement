@@ -1,0 +1,36 @@
+﻿@model MyAssessment.Core.ViewModels.DepartmentDetailsViewModel
+
+<div class="card shadow p-4">
+    <h2>@Model.DepartmentName</h2>
+    <p><strong>Manager:</strong> @Model.ManagerName</p>
+    <p><strong>Total Salary:</strong> @Model.TotalSalary</p>
+
+    <hr />
+
+    <h4>Employees</h4>
+
+    @if (Model.Employees != null && Model.Employees.Any())
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Salary</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var emp in Model.Employees)
+                {
+                    <tr>
+                        <td>@emp.Name</td>
+                        <td>@emp.Salary</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p class="text-muted">No employees in this department.</p>
+    }
+</div>

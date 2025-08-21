@@ -1,74 +1,29 @@
-﻿@model MyAssessment.Core.ViewModels.EmployeeViewModel
+﻿@model MyAssessment.Core.Entities.TaskItem
 
+@{
+    ViewData["Title"] = "Create Task";
+}
 
-<div class="page-header">
-    <h1>Edit Employee Info</h1>
-</div>
-<form method="post" asp-action="Update" asp-controller="Employee" asp-area="" enctype="multipart/form-data" class="ml-5">
-    <div class="row">
-        <div class="col-md-6">
+<h5>Update Task</h5>
 
-            <div class="form-group">
-                <label asp-for="FirstName" class="col-form-label">First Name</label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LastName" class="col-form-label">Last Name</label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Salary" class="col-form-label">Salary</label>
-                <input asp-for="Salary" class="form-control" />
-                <span asp-validation-for="Salary" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <label>Department</label>
-                <select asp-for="DepartmentId" asp-items="ViewBag.Departments" class="form-control"></select>
-            </div>
-        </div>
-        <div class="form-group">
-            @if (!string.IsNullOrEmpty(Model.ImagePath))
-            {
-                <div id="employeeImageSection">
-                    <img src="~/uploads/employees/@Model.ImagePath"
-                         alt="Employee Image"
-                         style="max-width:150px; max-height:150px;" />
-                    <button type="button" id="removeImageBtn" class="btn btn-danger btn-sm mt-2">Remove Image</button>
-                </div>
-
-                <div id="uploadNewImageSection" style="display:none;">
-                    <label asp-for="ImageFile"></label>
-                    <input asp-for="ImageFile" type="file" class="form-control" />
-                </div>
-            }
-            else
-            {
-                <div id="uploadNewImageSection">
-                    <label asp-for="ImageFile"></label>
-                    <input asp-for="ImageFile" type="file" class="form-control" />
-                </div>
-            }
-        </div>
-        <input type="hidden" asp-for="Id" value="@Model.Id" />
-
+<form asp-action="Update" method="post">
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
     </div>
-    <button type="submit" class="btn btn-primary">Save</button>
-
+    <div class="form-group">
+        <label>Task Status</label>
+        <select asp-for="Status" asp-items="@ViewBag.Status" class="form-control">
+            <option value=""> Select Status</option>
+        </select>
+    </div>
+    <input hidden asp-for="Id" value="@Model.Id" class="form-control" />
+    <br/>
+    <button type="submit" class="btn btn-primary">Update Task</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
 </form>
+
 @section Scripts {
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const removeBtn = document.getElementById("removeImageBtn");
-            if (removeBtn) {
-                removeBtn.addEventListener("click", function () {
-                    document.getElementById("employeeImageSection").style.display = "none";
-                    document.getElementById("uploadNewImageSection").style.display = "block";
-                });
-            }
-        });
-    </script>
+    <partial name="_ValidationScriptsPartial" />
 }
